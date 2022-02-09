@@ -15,7 +15,8 @@
   },
   "scripts": {
     "install": "lerna bootstrap",
-    "prestart": ""
+    "prestart": "yarn run install && lerna run build",
+    "start": "lerna run --scope @alarm2me/server start:prod"
   },
   "version": "1.0.0",
   "author": "HYEONSEUNG KANG <h5k@ajou.ac.kr>",

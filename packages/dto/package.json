@@ -26,6 +26,7 @@
     "dist"
   ],
   "scripts": {
-    "build:watch": "tsc -p tsconfig.build.json -w --preserveWatchOutput"
+    "build:watch": "tsc -p tsconfig.build.json -w --preserveWatchOutput",
+    "build": "tsc -p tsconfig.build.json"
   }
 }
