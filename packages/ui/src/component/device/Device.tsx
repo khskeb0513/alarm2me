@@ -56,8 +56,9 @@ const Device = () => {
                 <tr
                   onClick={() => {
                     navigator.clipboard.writeText(device.deviceNickname);
-                    alert(
+                    prompt(
                       `Device Nickname copied.\nLast Used: ${device.lastUsed} GMT\nCreated At: ${device.createdAt} GMT`,
+                      device.deviceNickname,
                     );
                   }}
                 >
