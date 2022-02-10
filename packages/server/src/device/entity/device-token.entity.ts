@@ -9,7 +9,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { UserEntity } from '../../user/entity/user.entity';
-import { DeviceTypeTagType } from '@alarm2me/dto/dist/user/type/device-type-tag.type';
+import { DeviceTypeTagType } from '@alarm2me/dto/dist/device/type/device-type-tag.type';
 
 @Entity('device_token')
 @Index(['userId', 'deviceNickname'], { unique: true })
