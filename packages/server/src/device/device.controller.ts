@@ -5,6 +5,7 @@ import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { CreateDeviceTokenRequestDto } from './dto/create-device-token-request.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { JwtPayload } from '../decorator/jwt-payload.decorator';
+import { UpdateDeviceTokenRequestDto } from './dto/update-device-token-request.dto';
 
 @Controller({
   version: '1',
@@ -23,6 +24,17 @@ export class DeviceController {
   @Get('/deviceToken/:deviceToken')
   public async findByDeviceToken(@Param('deviceToken') deviceToken: string) {
     return this.deviceService.findAllByDeviceToken(deviceToken);
+  }
+
+  @Post('/deviceToken/:deviceToken')
+  public async updateDeviceToken(
+    @Param('deviceToken') deviceToken: string,
+    @Body() updateDeviceTokenRequestDto: UpdateDeviceTokenRequestDto,
+  ) {
+    return this.deviceService.updateDeviceToken(
+      deviceToken,
+      updateDeviceTokenRequestDto,
+    );
   }
 
   @Get('/:authToken')

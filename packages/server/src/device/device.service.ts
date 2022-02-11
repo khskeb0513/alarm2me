@@ -6,6 +6,7 @@ import { UserService } from '../user/user.service';
 import { CreateDeviceTokenRequestDto } from './dto/create-device-token-request.dto';
 import * as randomSlugs from 'random-word-slugs';
 import { CreateDeviceTokenResponseDto } from './dto/create-device-token-response.dto';
+import { UpdateDeviceTokenRequestDto } from './dto/update-device-token-request.dto';
 
 @Injectable()
 export class DeviceService {
@@ -53,6 +54,16 @@ export class DeviceService {
         userId: { id: userId },
       })),
     });
+  }
+
+  public async updateDeviceToken(
+    deviceToken: string,
+    updateDeviceTokenRequestDto: UpdateDeviceTokenRequestDto,
+  ) {
+    return this.deviceTokenEntityRepository.update(
+      { token: deviceToken },
+      { token: updateDeviceTokenRequestDto.newToken },
+    );
   }
 
   public async findAllByDeviceToken(deviceToken: string) {
