@@ -31,10 +31,11 @@ export class DeviceController {
     @Param('deviceToken') deviceToken: string,
     @Body() updateDeviceTokenRequestDto: UpdateDeviceTokenRequestDto,
   ) {
-    return this.deviceService.updateDeviceToken(
+    await this.deviceService.updateDeviceToken(
       deviceToken,
       updateDeviceTokenRequestDto,
     );
+    return true;
   }
 
   @Get('/:authToken')
