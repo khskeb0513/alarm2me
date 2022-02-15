@@ -50,10 +50,10 @@ export class UserService {
           domainUriPrefix: 'https://alarm2me.page.link',
           link: `https://alarm2.me/v1/auth/token/${authToken}?link_type=auth_token`,
           androidInfo: {
-            androidPackageName: 'me.alarm2.app',
+            androidPackageName: 'me.alarm2.app.client',
           },
           iosInfo: {
-            iosBundleId: 'me.alarm2.app',
+            iosBundleId: 'me.alarm2.app.client',
           },
         },
         suffix: {
