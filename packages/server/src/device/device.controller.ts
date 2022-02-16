@@ -18,7 +18,7 @@ export class DeviceController {
   @Get('/')
   @UseGuards(JwtAuthGuard)
   public async findAllByUser(@JwtPayload() user: JwtPayloadDto) {
-    return this.deviceService.findAllByUserId(user.sub);
+    return this.deviceService.findAllByUserAuthToken(user.sub);
   }
 
   @Get('/deviceToken/:deviceToken')
@@ -40,7 +40,7 @@ export class DeviceController {
 
   @Get('/:authToken')
   public async findByAuthToken(@Param('authToken') authToken: string) {
-    return this.deviceService.findAllByUserId(authToken);
+    return this.deviceService.findAllByUserAuthToken(authToken);
   }
 
   @Post('/')

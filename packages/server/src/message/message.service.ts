@@ -44,10 +44,9 @@ export class MessageService {
         HttpStatus.BAD_REQUEST,
       );
     }
-    const tokens = await this.deviceService.findByDeviceNamesAndUserId(
-      user.id,
-      to,
-    );
+    const tokens = to.includes('all')
+      ? await this.deviceService.findAllByUserId(user.id)
+      : await this.deviceService.findByDeviceNamesAndUserId(user.id, to);
     const payloads: Message[] = tokens.map((to) => {
       return {
         notification: {

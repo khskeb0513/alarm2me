@@ -35,7 +35,7 @@ export class DeviceService {
       userId: { id: user.id },
       token: createDeviceTokenDto.deviceToken,
       deviceNickname:
-        createDeviceTokenDto.deviceModel + '-' + randomSlugs.generateSlug(2),
+        createDeviceTokenDto.deviceModel + '-' + randomSlugs.generateSlug(3),
     });
     return {
       deviceModel: response.deviceModel,
@@ -85,7 +85,22 @@ export class DeviceService {
     }));
   }
 
-  public async findAllByUserId(userAuthToken: string) {
+  public async findAllByUserId(id: number) {
+    return this.deviceTokenEntityRepository.find({
+      where: {
+        userId: id,
+      },
+      select: [
+        'deviceModel',
+        'deviceTypeTag',
+        'createdAt',
+        'lastUsed',
+        'deviceNickname',
+      ],
+    });
+  }
+
+  public async findAllByUserAuthToken(userAuthToken: string) {
     const user = await this.userService.findByUserAuthToken(userAuthToken);
     if (!user) return null;
     return this.deviceTokenEntityRepository.find({
