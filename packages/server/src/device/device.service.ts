@@ -7,6 +7,7 @@ import { CreateDeviceTokenRequestDto } from './dto/create-device-token-request.d
 import * as randomSlugs from 'random-word-slugs';
 import { CreateDeviceTokenResponseDto } from './dto/create-device-token-response.dto';
 import { UpdateDeviceTokenRequestDto } from './dto/update-device-token-request.dto';
+import { customAlphabet } from 'nanoid';
 
 @Injectable()
 export class DeviceService {
@@ -23,6 +24,8 @@ export class DeviceService {
     );
   }
 
+  private nanoid = customAlphabet('6789BCDFGHJKLMNPQRTWbcdfghjkmnpqrtwz', 6);
+
   public async create(
     createDeviceTokenDto: CreateDeviceTokenRequestDto,
   ): Promise<CreateDeviceTokenResponseDto> {
@@ -35,7 +38,11 @@ export class DeviceService {
       userId: { id: user.id },
       token: createDeviceTokenDto.deviceToken,
       deviceNickname:
-        createDeviceTokenDto.deviceModel + '-' + randomSlugs.generateSlug(3),
+        createDeviceTokenDto.deviceModel +
+        '-' +
+        randomSlugs.generateSlug(3) +
+        '-' +
+        this.nanoid(),
     });
     return {
       deviceModel: response.deviceModel,
