@@ -40,7 +40,7 @@ export class DeviceService {
       deviceNickname:
         createDeviceTokenDto.deviceModel +
         '-' +
-        randomSlugs.generateSlug(3) +
+        randomSlugs.generateSlug(2) +
         '-' +
         this.nanoid(),
     });
