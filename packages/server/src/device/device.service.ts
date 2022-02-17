@@ -97,13 +97,6 @@ export class DeviceService {
       where: {
         userId: id,
       },
-      select: [
-        'deviceModel',
-        'deviceTypeTag',
-        'createdAt',
-        'lastUsed',
-        'deviceNickname',
-      ],
     });
   }
 
