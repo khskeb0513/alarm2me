@@ -27,10 +27,10 @@ function Index() {
       <p style={{ fontStyle: 'italic' }}>
         Just Call REST API and we handle rest of it.
       </p>
-      <a href="https://alarm2me.page.link/download-client">
+      <a href="/v1/auth/github">
         <Image src={signInGithub} alt="sign in" width={196} />
       </a>
-      <a href="/v1/auth/github">
+      <a href="https://alarm2me.page.link/download-client">
         <Image src={downloadClients} alt="download clients" width={196} />
       </a>
     </Div>
