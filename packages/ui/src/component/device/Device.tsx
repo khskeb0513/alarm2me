@@ -43,7 +43,9 @@ const Device = () => {
               srcSet={downloadButtonImage}
               width={156}
             />
-            <img src={miniDownloadButtonImage} alt="logo" width={32} />
+            <a href="https://alarm2me.page.link/download-client">
+              <img src={miniDownloadButtonImage} alt="logo" width={32} />
+            </a>
           </picture>
         </div>
       </HeaderContents>

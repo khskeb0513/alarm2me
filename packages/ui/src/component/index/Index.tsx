@@ -27,10 +27,12 @@ function Index() {
       <p style={{ fontStyle: 'italic' }}>
         Just Call REST API and we handle rest of it.
       </p>
-      <a href="/v1/auth/github">
+      <a href="https://alarm2me.page.link/download-client">
         <Image src={signInGithub} alt="sign in" width={196} />
       </a>
-      <Image src={downloadClients} alt="download clients" width={196} />
+      <a href="/v1/auth/github">
+        <Image src={downloadClients} alt="download clients" width={196} />
+      </a>
     </Div>
   );
   return !auth.user ? indexPage : <User />;
