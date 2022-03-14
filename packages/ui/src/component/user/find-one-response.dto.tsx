@@ -1,4 +1,4 @@
-import { FindOneResponseProps } from '@alarm2me/dto/dist/user/props/find-one-response.props';
+import { FindOneResponseProps } from '@alarm2me/dto';
 
 export class FindOneResponseDto implements FindOneResponseProps {
   email: string;

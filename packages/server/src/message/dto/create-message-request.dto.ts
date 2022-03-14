@@ -1,7 +1,6 @@
-import { CreateMessageRequestProps } from '@alarm2me/dto/dist/message/props/create-message-request.props';
-import { OnclickEnum } from '@alarm2me/dto/dist/message/enum/onclick.enum';
 import { IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
+import { CreateMessageRequestProps, OnclickEnum } from '@alarm2me/dto';
 
 export class CreateMessageRequestDto implements CreateMessageRequestProps {
   @ApiProperty()

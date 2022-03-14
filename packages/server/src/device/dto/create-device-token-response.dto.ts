@@ -1,5 +1,7 @@
-import { CreateDeviceTokenResponseProps } from '@alarm2me/dto/dist/device/props/create-device-token-response.props';
-import { DeviceTypeTagType } from '@alarm2me/dto/dist/device/type/device-type-tag.type';
+import {
+  CreateDeviceTokenResponseProps,
+  DeviceTypeTagType,
+} from '@alarm2me/dto';
 
 export class CreateDeviceTokenResponseDto
   implements CreateDeviceTokenResponseProps

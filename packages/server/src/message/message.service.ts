@@ -4,9 +4,9 @@ import { messaging } from 'firebase-admin';
 import { CreateMessageRequestDto } from './dto/create-message-request.dto';
 import { isNotEmpty, isURL } from 'class-validator';
 import { DeviceService } from '../device/device.service';
-import { OnclickEnum } from '@alarm2me/dto/dist/message/enum/onclick.enum';
 import { UserService } from '../user/user.service';
 import Message = messaging.Message;
+import { OnclickEnum } from '@alarm2me/dto';
 
 @Injectable()
 export class MessageService {

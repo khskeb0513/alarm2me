@@ -1,5 +1,5 @@
+import { DeviceTypeTagType } from '@alarm2me/dto';
 import { ApiProperty } from '@nestjs/swagger';
-import { DeviceTypeTagType } from '@alarm2me/dto/dist/device/type/device-type-tag.type';
 
 export class CreateDeviceTokenRequestDto {
   @ApiProperty()

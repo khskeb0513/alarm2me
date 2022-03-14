@@ -1,4 +1,4 @@
-import { FindOneByAuthTokenResponseProps } from '@alarm2me/dto/dist/user/props/find-one-by-auth-token-response.props';
+import { FindOneByAuthTokenResponseProps } from '@alarm2me/dto';
 
 export class FindOneByAuthTokenResponseDto
   implements FindOneByAuthTokenResponseProps
