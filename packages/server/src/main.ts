@@ -12,17 +12,15 @@ import { Logger } from './logger/logger';
 import { nanoid } from 'nanoid';
 
 async function bootstrap() {
+  await initializeApp({
+    credential: credential.cert(
+      join(__dirname, '..', 'alarm2me-firebase-adminsdk.json'),
+    ),
+  });
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.enableVersioning({
     type: VersioningType.URI,
   });
-  await app.get(Logger).log(
-    initializeApp({
-      credential: credential.cert(
-        join(__dirname, '..', 'alarm2me-firebase-adminsdk.json'),
-      ),
-    }).name,
-  );
   const swaggerPassword = nanoid(16);
   await app.use(
     ['/api'],
