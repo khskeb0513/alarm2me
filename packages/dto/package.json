@@ -29,7 +29,8 @@
     "dist"
   ],
   "scripts": {
-    "build:watch": "tsc -p tsconfig.build.json -w --preserveWatchOutput",
+    "prebuild": "rimraf dist",
+    "build:dev": "tsc -p tsconfig.build.json -w --preserveWatchOutput",
     "build": "tsc -p tsconfig.build.json"
   }
 }

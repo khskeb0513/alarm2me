@@ -25,6 +25,7 @@ import { validate } from './config/env.validation';
       isGlobal: true,
       load: [serverConfig, databaseConfig, oauthConfig],
       validate,
+      envFilePath: ['.development.env', '.production.env'],
     }),
     TypeOrmModule.forRoot({
       type: 'mariadb',
