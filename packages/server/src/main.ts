@@ -1,34 +1,29 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import {
-  ValidationPipe,
-  VersioningType,
-  Logger as CommonLogger,
-} from '@nestjs/common';
+import { ValidationPipe, VersioningType } from '@nestjs/common';
 import { initializeApp } from 'firebase-admin/app';
 import { credential } from 'firebase-admin';
 import { join } from 'path';
 import * as cookieParser from 'cookie-parser';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import * as expressBasicAuth from 'express-basic-auth';
-import * as randomSlugs from 'random-word-slugs';
 import { Logger } from './logger/logger';
+import { nanoid } from 'nanoid';
 
 async function bootstrap() {
-  await console.log(
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  app.enableVersioning({
+    type: VersioningType.URI,
+  });
+  await app.get(Logger).log(
     initializeApp({
       credential: credential.cert(
         join(__dirname, '..', 'alarm2me-firebase-adminsdk.json'),
       ),
     }).name,
   );
-
-  const app = await NestFactory.create<NestExpressApplication>(AppModule);
-  app.enableVersioning({
-    type: VersioningType.URI,
-  });
-  const swaggerPassword = randomSlugs.generateSlug(4);
+  const swaggerPassword = nanoid(16);
   await app.use(
     ['/api'],
     expressBasicAuth({
@@ -52,6 +47,6 @@ async function bootstrap() {
   await app.useLogger(await app.resolve(Logger));
   await app.useGlobalPipes(new ValidationPipe());
   await app.listen(process.env.PORT);
-  await CommonLogger.log({ swaggerPassword });
+  await app.get(Logger).log({ swaggerPassword });
 }
 bootstrap();
