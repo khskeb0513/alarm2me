@@ -1,15 +1,19 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { ValidationPipe, VersioningType } from '@nestjs/common';
+import {
+  ValidationPipe,
+  VersioningType,
+  Logger as CommonLogger,
+} from '@nestjs/common';
 import { initializeApp } from 'firebase-admin/app';
 import { credential } from 'firebase-admin';
 import { join } from 'path';
 import * as cookieParser from 'cookie-parser';
 import { NestExpressApplication } from '@nestjs/platform-express';
-import { Logger } from './logger/logger';
 import * as expressBasicAuth from 'express-basic-auth';
 import * as randomSlugs from 'random-word-slugs';
+import { Logger } from './logger/logger';
 
 async function bootstrap() {
   await console.log(
@@ -48,6 +52,6 @@ async function bootstrap() {
   await app.useLogger(await app.resolve(Logger));
   await app.useGlobalPipes(new ValidationPipe());
   await app.listen(process.env.PORT);
-  await console.log({ swaggerPassword });
+  await CommonLogger.log({ swaggerPassword });
 }
 bootstrap();
